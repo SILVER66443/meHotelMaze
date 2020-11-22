@@ -3,7 +3,6 @@ from matplotlib import pyplot as plt
 import random
 import matplotlib.cm as cm
 
-
 class Maze():
     def __init__(self):
         self.image=[]
@@ -13,6 +12,7 @@ class Maze():
         self._walls = []
         self.createMaze()
 
+    # 初始化规格
     def initMaze(self):
         x = 999
         y = 999
@@ -24,10 +24,12 @@ class Maze():
                     maze[i, j] = 1
         return maze
 
+    # 初始化seeker
     def initSeeker(self):
         self.maze[0, 0] = 2
         return (0, 0)
 
+    #将墙插入列表
     def insertWall(self):
         size = np.shape(self.maze)
 
@@ -41,6 +43,7 @@ class Maze():
             self._walls.append((self.seeker[0], self.seeker[1] - 1))
         self._walls = list(set(self._walls))
 
+    # 摧毁墙
     def destroy(self, wall):
         x = wall[0]
         y = wall[1]
@@ -83,6 +86,7 @@ class Maze():
         print(wall,"invalid wall , can not destroy!")
         return False
 
+    #将迷宫初始化，
     def createMaze(self):
         while True:
             self.insertWall()
@@ -91,12 +95,12 @@ class Maze():
             self.destroy(temp)
             if self._walls == []:
                 break
-
+    # 返回迷宫序列
     def displayMaze(self):
         print("\n迷宫：")
         print(self.maze)
         return self.maze
-
+    # 画图看一下
     def getImage(self):
         self.image = self.maze
         for i in range(0, self.size[0]):
@@ -109,8 +113,8 @@ class Maze():
         plt.imshow(self.image, cmap=cm.Greys_r, interpolation='none')
         plt.show()
 
-
 # main process
 maze1 = Maze()
 maze1.displayMaze()
+maze1.getImage()
 maze1.getImage()
