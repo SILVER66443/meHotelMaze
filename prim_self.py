@@ -1,3 +1,11 @@
+# 随机prim算法，随后得到一个迷宫矩阵，这个矩阵由3位flag组成，分别是
+# -1：未访问路径
+# 0：未访问墙
+# 1：已访问后标记的路径，包括墙，墙在被打破后也属于可行进路径
+# 2：已访问但不打破的墙
+# 最终的访问结果是没有-1的。
+# 算法缺陷：效率巨tm低，每个循环内最多添加2面墙，并且只打破1面墙，对
+# 于大规格的迷宫几乎无效。
 import numpy as np
 from matplotlib import pyplot as plt
 import random
@@ -114,7 +122,6 @@ class Maze():
         plt.show()
 
 # main process
-maze1 = Maze()
-maze1.displayMaze()
-maze1.getImage()
-maze1.getImage()
+# maze1 = Maze()
+# maze1.displayMaze()
+# maze1.getImage()
