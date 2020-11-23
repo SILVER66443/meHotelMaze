@@ -1,17 +1,11 @@
-# 随机prim算法，随后得到一个迷宫矩阵，这个矩阵由3位flag组成，分别是
-# -1：未访问路径
-# 0：未访问墙
-# 1：已访问后标记的路径，包括墙，墙在被打破后也属于可行进路径
-# 2：已访问但不打破的墙
-# 最终的访问结果是没有-1的。
-# 算法缺陷：效率巨tm低，每个循环内最多添加2面墙，并且只打破1面墙，对
-# 于大规格的迷宫几乎无效。
+# 随机prim算法
+# 缺少思想：点变动的时候添加墙
 import numpy as np
 from matplotlib import pyplot as plt
 import random
 import matplotlib.cm as cm
 
-class Maze():
+class prim_Maze():
     def __init__(self):
         self.image=[]
         self.maze = self.initMaze()
@@ -22,8 +16,8 @@ class Maze():
 
     # 初始化规格
     def initMaze(self):
-        x = 999
-        y = 999
+        x = 5
+        y = 5
         size = x, y
         maze = np.zeros(size)
         for i in range(x):
@@ -106,8 +100,8 @@ class Maze():
     # 返回迷宫序列
     def displayMaze(self):
         print("\n迷宫：")
-        print(self.maze)
-        return self.maze
+        print(self.image)
+        return self.image
     # 画图看一下
     def getImage(self):
         self.image = self.maze
@@ -118,10 +112,11 @@ class Maze():
                 if self.image[i, j] == 1 or self.image[i, j] == 3:
                     self.image[i, j] = 0
 
-        plt.imshow(self.image, cmap=cm.Greys_r, interpolation='none')
+        plt.imshow(self.image, interpolation='none')
         plt.show()
 
 # main process
-# maze1 = Maze()
-# maze1.displayMaze()
-# maze1.getImage()
+maze1 = prim_Maze()
+maze1.getImage()
+maze1.displayMaze()
+
