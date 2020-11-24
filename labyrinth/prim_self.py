@@ -7,7 +7,7 @@ import matplotlib.cm as cm
 
 class prim_Maze():
     def __init__(self):
-        self.image=[]
+        self.image=np.array([])
         self.maze = self.initMaze()
         self.size = np.shape(self.maze)
         self.seeker = self.initSeeker()
@@ -51,7 +51,6 @@ class prim_Maze():
         y = wall[1]
 
         # 纵墙
-        print("摧毁的当前墙",wall)
         if wall[0] % 2 == 1:
             # 上边和下边都访问过，无效墙
             if self.maze[x - 1, y] == 2 and self.maze[x + 1, y] == 2:
@@ -93,14 +92,11 @@ class prim_Maze():
         while True:
             self.insertWall()
             temp = self._walls.pop(random.randint(0, np.shape(self._walls)[0] - 1))
-            print(self.seeker)
             self.destroy(temp)
             if self._walls == []:
                 break
     # 返回迷宫序列
     def displayMaze(self):
-        print("\n迷宫：")
-        print(self.image)
         return self.image
     # 画图看一下
     def getImage(self):
@@ -112,8 +108,9 @@ class prim_Maze():
                 if self.image[i, j] == 1 or self.image[i, j] == 3:
                     self.image[i, j] = 0
 
-        plt.imshow(self.image, interpolation='none')
-        plt.show()
+        #plt.imshow(self.image, interpolation='none')
+        #plt.show()
+        return self.image
 
 # main process
 maze1 = prim_Maze()
