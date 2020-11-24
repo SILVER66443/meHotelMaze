@@ -5,10 +5,12 @@ from matplotlib import pyplot as plt
 import random
 import matplotlib.cm as cm
 
+
 class prim_Maze():
     def __init__(self):
-        self.image=np.array([])
-        self.maze = self.initMaze()
+        self.image = np.array([])  # 最后返回的类型
+        self.size = (35, 17)
+        self.maze = self.initMaze()  # 初始化
         self.size = np.shape(self.maze)
         self.seeker = self.initSeeker()
         self._walls = []
@@ -16,10 +18,9 @@ class prim_Maze():
 
     # 初始化规格
     def initMaze(self):
-        x = 9
-        y = 9
-        size = x, y
-        maze = np.zeros(size)
+
+        x, y = self.size
+        maze = np.zeros(self.size)
         for i in range(x):
             for j in range(y):
                 if i % 2 == 1 or j % 2 == 1:
@@ -31,7 +32,7 @@ class prim_Maze():
         self.maze[0, 0] = 2
         return (0, 0)
 
-    #将墙插入列表
+    # 将墙插入列表
     def insertWall(self):
         size = np.shape(self.maze)
 
@@ -54,7 +55,7 @@ class prim_Maze():
         if wall[0] % 2 == 1:
             # 上边和下边都访问过，无效墙
             if self.maze[x - 1, y] == 2 and self.maze[x + 1, y] == 2:
-                self.maze[x,y]=3
+                self.maze[x, y] = 3
                 return True
             # 穿透
             else:
@@ -84,10 +85,10 @@ class prim_Maze():
                     self.maze[x, y - 1] = 2
                     self.seeker = (x, y - 1)
                     return True
-        print(wall,"invalid wall , can not destroy!")
+        print(wall, "invalid wall , can not destroy!")
         return False
 
-    #将迷宫初始化，
+    # 将迷宫初始化，
     def createMaze(self):
         while True:
             self.insertWall()
@@ -95,11 +96,13 @@ class prim_Maze():
             self.destroy(temp)
             if self._walls == []:
                 break
+
     # 返回迷宫序列
     def displayMaze(self):
         return self.image
+
     # 画图看一下
-    def getImage(self):
+    def getMaze(self):
         self.image = self.maze
         for i in range(0, self.size[0]):
             for j in range(0, self.size[1]):
@@ -108,12 +111,11 @@ class prim_Maze():
                 if self.image[i, j] == 1 or self.image[i, j] == 3:
                     self.image[i, j] = 0
 
-        #plt.imshow(self.image, interpolation='none')
-        #plt.show()
-        return self.image
+        # plt.imshow(self.image, interpolation='none')
+        # plt.show()
+        return self.image, self.size
 
 # main process
-maze1 = prim_Maze()
-maze1.getImage()
-maze1.displayMaze()
-
+# maze1 = prim_Maze()
+# maze1.getImage()
+# maze1.displayMaze()

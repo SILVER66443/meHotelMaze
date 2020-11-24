@@ -4,20 +4,18 @@ from sys import exit
 import numpy as np
 from labyrinth import prim_self
 
-
-maze = prim_self.prim_Maze().getImage()
-print(maze)
+maze, size = prim_self.prim_Maze().getMaze()
+print(size)
 
 pygame.init()  # 初始化pygame
-size = width, height = 450, 450  # 设置窗口大小
-screen = pygame.display.set_mode(size)  # 显示窗口
+screen = pygame.display.set_mode((size[0]*50,size[1]*50))  # 显示窗口
 ball = pygame.image.load('../PNG/seeker.png')  # 加载图片
 wall = pygame.image.load('../PNG/wall.png')
 wall_list = []
 
 # 创建墙
-for i in range(9):
-    for j in range(9):
+for i in range(size[0]):
+    for j in range(size[1]):
         if maze[i, j] == 0:
             temp = pygame.image.load('../PNG/wall.png'), (i * 50, j * 50)
             wall_list.append(temp)
@@ -46,7 +44,7 @@ while True:  # 死循环确保窗口一直显示
     # if ballrect.top < 0 or ballrect.bottom > height:
     #     speed[1] = -speed[1]
 
-    screen.fill((255,255,255))  # 填充颜色(设置为0，执不执行这行代码都一样)
+    screen.fill((255, 255, 255))  # 填充颜色(设置为0，执不执行这行代码都一样)
     for i in wall_list:
         screen.blit(i[0], i[1])
     screen.blit(ball, ballrect)  # 将图片画到窗口上
