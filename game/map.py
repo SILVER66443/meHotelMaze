@@ -4,38 +4,26 @@ from sys import exit
 import numpy as np
 from labyrinth import prim_self
 
-maze1 = np.array([[255, 255, 255, 255, 255, 255, 255, 0, 255],
-                  [0, 0, 255, 0, 255, 0, 0, 0, 255],
-                  [255, 0, 255, 0, 255, 255, 255, 0, 255],
-                  [255, 0, 255, 0, 255, 0, 255, 0, 255],
-                  [255, 255, 255, 0, 255, 0, 255, 255, 255],
-                  [0, 0, 255, 0, 0, 0, 0, 0, 255],
-                  [255, 255, 255, 255, 255, 255, 255, 0, 255],
-                  [255, 0, 255, 0, 0, 0, 255, 0, 255],
-                  [255, 0, 255, 255, 255, 0, 255, 0, 255]], )
 
 maze = prim_self.prim_Maze().getImage()
 print(maze)
+
 pygame.init()  # 初始化pygame
 size = width, height = 450, 450  # 设置窗口大小
 screen = pygame.display.set_mode(size)  # 显示窗口
-color = (255, 255, 255)  # 设置颜色
 ball = pygame.image.load('../PNG/seeker.png')  # 加载图片
 wall = pygame.image.load('../PNG/wall.png')
-wall_pos = []
 wall_list = []
+
+# 创建墙
 for i in range(9):
     for j in range(9):
         if maze[i, j] == 0:
-            temp = i, j
-            wall_pos.append(temp)
             temp = pygame.image.load('../PNG/wall.png'), (i * 50, j * 50)
             wall_list.append(temp)
-
+# 创建seeker
 background = pygame.image.load('../PNG/PRIM1.png')
 ballrect = ball.get_rect()  # 获取矩形区域
-
-speed = [50, 50]  # 设置移动的X轴、Y轴
 
 while True:  # 死循环确保窗口一直显示
     for event in pygame.event.get():  # 遍历所有事件
@@ -58,7 +46,7 @@ while True:  # 死循环确保窗口一直显示
     # if ballrect.top < 0 or ballrect.bottom > height:
     #     speed[1] = -speed[1]
 
-    screen.fill(color)  # 填充颜色(设置为0，执不执行这行代码都一样)
+    screen.fill((255,255,255))  # 填充颜色(设置为0，执不执行这行代码都一样)
     for i in wall_list:
         screen.blit(i[0], i[1])
     screen.blit(ball, ballrect)  # 将图片画到窗口上
