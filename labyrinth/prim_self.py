@@ -16,8 +16,8 @@ class prim_Maze():
 
     # 初始化规格
     def initMaze(self):
-        x = 5
-        y = 5
+        x = 9
+        y = 9
         size = x, y
         maze = np.zeros(size)
         for i in range(x):
