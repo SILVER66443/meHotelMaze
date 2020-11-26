@@ -5,7 +5,6 @@ import numpy as np
 from labyrinth import prim_self
 
 maze, size = prim_self.prim_Maze().getMaze()
-print(size)
 
 pygame.init()  # 初始化pygame
 screen = pygame.display.set_mode((size[0]*50,size[1]*50))  # 显示窗口
