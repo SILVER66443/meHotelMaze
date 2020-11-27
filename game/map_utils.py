@@ -4,7 +4,6 @@ from sys import exit
 import numpy as np
 from labyrinth import prim_self
 
-
 class Map():
     # 初始化
     def __init__(self, MazeMat):
