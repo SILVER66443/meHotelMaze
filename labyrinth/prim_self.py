@@ -9,7 +9,7 @@ import matplotlib.cm as cm
 class prim_Maze():
     def __init__(self):
         self.image = np.array([])  # 最后返回的类型
-        self.size = (35, 17)
+        self.size = (9, 9)
         self.maze = self.initMaze()  # 初始化
         self.size = np.shape(self.maze)
         self.seeker = self.initSeeker()
@@ -101,7 +101,7 @@ class prim_Maze():
     def displayMaze(self):
         return self.image
 
-    # 画图看一下
+    # 返回2值矩阵，用于画图等等
     def getMaze(self):
         self.image = self.maze
         for i in range(0, self.size[0]):
@@ -110,12 +110,4 @@ class prim_Maze():
                     self.image[i, j] = 255
                 if self.image[i, j] == 1 or self.image[i, j] == 3:
                     self.image[i, j] = 0
-
-        # plt.imshow(self.image, interpolation='none')
-        # plt.show()
-        return self.image, self.size
-
-# main process
-# maze1 = prim_Maze()
-# maze1.getImage()
-# maze1.displayMaze()
+        return self.image
