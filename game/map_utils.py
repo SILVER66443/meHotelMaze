@@ -34,12 +34,14 @@ class Map():
     # 根据速度移动
     def move(self):
         new_seeker = [self.seeker[0] + self.step[0], self.seeker[1] + self.step[1]]
-        if new_seeker[0] < self.size[0] or new_seeker[0] > self.size[0] or new_seeker[1] < self.size[1] or new_seeker[
+
+        if new_seeker[0] < 0 or new_seeker[0] > self.size[0] or new_seeker[1] < 0 or new_seeker[
             1] > self.size[1]:
             return [0, 0]
         if self.maze[new_seeker[0], new_seeker[1]] == 0:
+
             return [0, 0]
-        print("act exe suc!")
+
         self.seeker = new_seeker
         return self.step
 

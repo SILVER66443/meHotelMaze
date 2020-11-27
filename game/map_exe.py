@@ -21,16 +21,16 @@ while True:  # 死循环确保窗口一直显示
             exit()
         if event.type == KEYDOWN:
             if event.key == K_RIGHT:
-                map.set_step([50, 0])
+                map.set_step([1, 0])
             if event.key == K_LEFT:
-                map.set_step([-50, 0])
+                map.set_step([-1, 0])
             if event.key == K_UP:
-                map.set_step([0, -50])
+                map.set_step([0, -1])
             if event.key == K_DOWN:
-                map.set_step([0, 50])
+                map.set_step([0, 1])
 
             step = map.move()
-            p_rect = p_rect.move(step)
+            p_rect = p_rect.move([step[0]*50,step[1]*50])
 
     screen.fill((255, 255, 255))  # 填充颜色(设置为0，执不执行这行代码都一样)
 
