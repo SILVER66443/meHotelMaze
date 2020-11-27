@@ -10,7 +10,6 @@ class Map():
         # 地图数据
         self.maze = MazeMat
         self.size = np.shape(self.maze)
-
         # 墙列表
         self.wall_list = []
         print(self.size)
