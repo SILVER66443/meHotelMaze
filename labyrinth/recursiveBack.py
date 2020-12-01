@@ -82,7 +82,7 @@ for row in range(0, num_rows):
         if cell_data[3] == 1:
             image[10 * row + 9, range(10 * col + 2, 10 * col + 8)] = 255
             image[10 * row + 8, range(10 * col + 2, 10 * col + 8)] = 255
-
+self.states = np.array(range(1, 26))
 # Display the image
 plt.imshow(image, cmap=cm.Greys_r, interpolation='none')
 plt.show()

@@ -6,10 +6,10 @@ import random
 import matplotlib.cm as cm
 
 
-class prim_Maze():
+class PrimMaze():
     def __init__(self):
         self.image = np.array([])  # 最后返回的类型
-        self.size = (15, 15)
+        self.size = (5, 5)
         self.maze = self.initMaze()  # 初始化
         self.size = np.shape(self.maze)
         self.seeker = self.initSeeker()
@@ -47,7 +47,7 @@ class prim_Maze():
         self._walls = list(set(self._walls))
 
     # 摧毁墙
-    def destroy(self, wall):
+    def destroyWall(self, wall):
         x = wall[0]
         y = wall[1]
 
@@ -93,7 +93,7 @@ class prim_Maze():
         while True:
             self.insertWall()
             temp = self._walls.pop(random.randint(0, np.shape(self._walls)[0] - 1))
-            self.destroy(temp)
+            self.destroyWall(temp)
             if self._walls == []:
                 break
 
