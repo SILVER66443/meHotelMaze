@@ -1,12 +1,12 @@
-from game import map_utils
-from labyrinth import prim_self
+from game import MapUtils
+from labyrinth import PrimLaby
 import numpy as np
 import pygame
 from pygame.locals import *
 from sys import exit
 
-maze = prim_self.PrimMaze().getMaze()
-map = map_utils.Map(maze)
+maze = PrimLaby.PrimMaze().getMaze()
+map = MapUtils.Map(maze)
 
 pygame.init()  # 初始化pygame
 screen = pygame.display.set_mode((map.mazesize[0] * 50, map.mazesize[1] * 50))  # 显示窗口

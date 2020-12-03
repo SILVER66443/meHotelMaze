@@ -2,7 +2,7 @@ import pygame
 from pygame.locals import *
 from sys import exit
 import numpy as np
-from labyrinth import prim_self
+from labyrinth import PrimLaby
 
 
 class Map():

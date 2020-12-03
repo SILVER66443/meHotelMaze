@@ -1,13 +1,13 @@
 import numpy as np
-from labyrinth import prim_self
-from game import map_utils
+from labyrinth import PrimLaby
+from game import MapUtils
 
 
-class Model(map_utils.Map):
+class Model(MapUtils.Map):
 
     def __init__(self, mazemat):
 
-        map_utils.Map.__init__(self, mazemat)
+        MapUtils.Map.__init__(self, mazemat)
         # 动作空间
         self.actions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
         # 状态空间的v值
@@ -21,6 +21,7 @@ class Model(map_utils.Map):
             for j in range(self.mazesize[1]):
                 self.pi[(i, j)] = self.getAction((i, j))
 
+    # 获得当前点的可用路径
     def getAction(self, state):
 
         a_temp = []
@@ -34,7 +35,8 @@ class Model(map_utils.Map):
         print(self.v)
         print(self.pi)
 
-mazemat = prim_self.PrimMaze().getMaze()
+
+mazemat = PrimLaby.PrimMaze().getMaze()
 print(mazemat)
 model = Model(mazemat)
 model.display()
