@@ -31,12 +31,8 @@ while True:  # 死循环确保窗口一直显示
             if event.key == K_DOWN:
                 speed = (0, 1)
 
-            speed = map.stateMove(speed)
+            speed = map.state_move(speed)
             p_rect = p_rect.move([speed[0] * 50, speed[1] * 50])
-
-        if map.isEnd():
-            print(map.goal)
-            exit()
 
     screen.fill((255, 255, 255))  # 填充颜色(设置为0，执不执行这行代码都一样)
 

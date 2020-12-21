@@ -24,7 +24,7 @@ class Map():
         self.end = [self.mazesize[0] - 1, self.mazesize[1] - 1]
 
     # 根据速度移动
-    def stateMove(self, speed):
+    def state_move(self, speed):
 
         # 当返回的速度为0,则移动失败。
         new_seeker = [self.seeker[0] + speed[0], self.seeker[1] + speed[1]]
@@ -40,15 +40,14 @@ class Map():
         return speed
 
     # 是否结束
-    def isEnd(self):
-        if self.seeker == self.end:
-            self.goal += 10
+    def is_end(self, state):
+        if state == self.end:
             return True
         else:
             return False
 
     # 重置起始点
-    def reSet(self):
+    def reset(self):
         self.seeker = self.start
 
     def detector(self):
