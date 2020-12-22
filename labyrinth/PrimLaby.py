@@ -9,7 +9,7 @@ import matplotlib.cm as cm
 class PrimMaze():
     def __init__(self):
         self.image = np.array([])  # 最后返回的类型
-        self.size = (5, 5)
+        self.size = (15, 15)
         self.maze = self.initMaze()  # 初始化
         self.size = np.shape(self.maze)
         self.seeker = self.initSeeker()
