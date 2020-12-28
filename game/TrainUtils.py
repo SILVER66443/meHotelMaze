@@ -66,7 +66,7 @@ class Model(MapUtils.Map):
         print(self.walls)
 
 
-mazemat = PrimLaby.PrimMaze().getMaze()
+mazemat = PrimLaby.PrimMaze().getmaze()
 print(mazemat)
 model = Model(mazemat)
 

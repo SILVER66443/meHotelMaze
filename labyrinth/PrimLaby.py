@@ -8,16 +8,16 @@ import matplotlib.cm as cm
 
 class PrimMaze():
     def __init__(self):
-        self.image = np.array([])  # 最后返回的类型
-        self.size = (15, 15)
-        self.maze = self.initMaze()  # 初始化
+        self.image = np.array([])  # 类型备份，因为后面我需要迷宫成2值状态
+        self.size = (5, 5)
+        self.maze = self.initmaze()  # 初始化
         self.size = np.shape(self.maze)
-        self.seeker = self.initSeeker()
-        self._walls = []
-        self.createMaze()
+        self.seeker = self.initseeker()
+        self._walls = []    # 墙列表
+        self.createmaze()   # 生成迷宫
 
     # 初始化规格
-    def initMaze(self):
+    def initmaze(self):
 
         x, y = self.size
         maze = np.zeros(self.size)
@@ -28,12 +28,12 @@ class PrimMaze():
         return maze
 
     # 初始化seeker
-    def initSeeker(self):
+    def initseeker(self):
         self.maze[0, 0] = 2
         return (0, 0)
 
     # 将墙插入列表
-    def insertWall(self):
+    def insertwall(self):
         size = np.shape(self.maze)
 
         if self.seeker[0] + 1 < size[0] and self.maze[self.seeker[0] + 1, self.seeker[1]] == 1:
@@ -47,7 +47,7 @@ class PrimMaze():
         self._walls = list(set(self._walls))
 
     # 摧毁墙
-    def destroyWall(self, wall):
+    def destroywall(self, wall):
         x = wall[0]
         y = wall[1]
 
@@ -89,20 +89,20 @@ class PrimMaze():
         return False
 
     # 将迷宫初始化，
-    def createMaze(self):
+    def createmaze(self):
         while True:
-            self.insertWall()
+            self.insertwall()
             temp = self._walls.pop(random.randint(0, np.shape(self._walls)[0] - 1))
-            self.destroyWall(temp)
+            self.destroywall(temp)
             if self._walls == []:
                 break
 
     # 返回迷宫序列
-    def displayMaze(self):
+    def displaymaze(self):
         return self.image
 
     # 返回2值矩阵，用于画图等等
-    def getMaze(self):
+    def getmaze(self):
         self.image = self.maze
         for i in range(0, self.size[0]):
             for j in range(0, self.size[1]):
