@@ -6,10 +6,10 @@ import random
 import matplotlib.cm as cm
 
 
-class PrimMaze():
+class PrimMaze:
     def __init__(self):
         self.image = np.array([])  # 类型备份，因为后面我需要迷宫成2值状态
-        self.size = (5, 5)
+        self.size = (15, 15)
         self.maze = self.initmaze()  # 初始化
         self.size = np.shape(self.maze)
         self.seeker = self.initseeker()
@@ -88,13 +88,13 @@ class PrimMaze():
         print(wall, "invalid wall , can not destroy!")
         return False
 
-    # 将迷宫初始化，
+    # 将迷宫初始化
     def createmaze(self):
         while True:
             self.insertwall()
             temp = self._walls.pop(random.randint(0, np.shape(self._walls)[0] - 1))
             self.destroywall(temp)
-            if self._walls == []:
+            if not self._walls:
                 break
 
     # 返回迷宫序列
