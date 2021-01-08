@@ -65,7 +65,6 @@ class RecBack:
                 x, y = history.pop()
 
     def dispaly(self):
-        print(self.maze)
         plt.imshow(self.maze, cmap=cm.Greys_r, interpolation='none')
         plt.show()
 
