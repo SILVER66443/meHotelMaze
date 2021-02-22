@@ -6,7 +6,6 @@ from pygame.locals import *
 from sys import exit
 
 maze = PrimLaby.PrimMaze().getmaze()
-print(maze)
 map = MapUtils.Map(maze)
 
 pygame.init()  # 初始化pygame

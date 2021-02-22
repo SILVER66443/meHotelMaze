@@ -9,18 +9,18 @@ import matplotlib.cm as cm
 class PrimMaze:
     def __init__(self):
         self.image = np.array([])  # 类型备份，因为后面我需要迷宫成2值状态
-        self.size = (15, 15)
-        self.maze = self.initmaze()  # 初始化
-        self.size = np.shape(self.maze)
-        self.seeker = self.initseeker()
-        self._walls = []    # 墙列表
-        self.createmaze()   # 生成迷宫
+        self.size = (15, 15)  # 大小
+        self.maze = self.initmaze()  # 初始化迷宫矩阵规格
+        self.seeker = self.initseeker()  # 初始化Seeker
+        self._walls = []  # 墙列表
+        self.createmaze()  # 生成迷宫
 
     # 初始化规格
     def initmaze(self):
 
         x, y = self.size
-        maze = np.zeros(self.size)
+        maze = np.zeros(self.size)  # 创建0矩阵
+        # 标记墙
         for i in range(x):
             for j in range(y):
                 if i % 2 == 1 or j % 2 == 1:
@@ -36,6 +36,7 @@ class PrimMaze:
     def insertwall(self):
         size = np.shape(self.maze)
 
+        # 添加过程
         if self.seeker[0] + 1 < size[0] and self.maze[self.seeker[0] + 1, self.seeker[1]] == 1:
             self._walls.append((self.seeker[0] + 1, self.seeker[1]))
         if self.seeker[0] - 1 > 0 and self.maze[self.seeker[0] - 1, self.seeker[1]] == 1:
@@ -44,6 +45,8 @@ class PrimMaze:
             self._walls.append((self.seeker[0], self.seeker[1] + 1))
         if self.seeker[1] - 1 > 0 and self.maze[self.seeker[0], self.seeker[1] - 1] == 1:
             self._walls.append((self.seeker[0], self.seeker[1] - 1))
+
+        # 使用集合得特性去掉重复得墙
         self._walls = list(set(self._walls))
 
     # 摧毁墙
