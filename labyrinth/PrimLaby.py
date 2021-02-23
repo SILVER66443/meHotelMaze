@@ -6,10 +6,10 @@ import random
 import matplotlib.cm as cm
 
 
-class PrimMaze:
-    def __init__(self):
+class PrimMaze():
+    def __init__(self, mazesize):
         self.image = np.array([])  # 类型备份，因为后面我需要迷宫成2值状态
-        self.size = (15, 15)  # 大小
+        self.size = mazesize  # 大小
         self.maze = self.initmaze()  # 初始化迷宫矩阵规格
         self.seeker = self.initseeker()  # 初始化Seeker
         self._walls = []  # 墙列表

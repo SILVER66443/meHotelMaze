@@ -1,14 +1,14 @@
 import numpy as np
 import random
 from labyrinth import PrimLaby
-from game import MapUtils
+from game import GameUtils
 
 
-class Model(MapUtils.Map):
+class Model(GameUtils.Map):
 
     def __init__(self, mazemat):
 
-        MapUtils.Map.__init__(self, mazemat)
+        GameUtils.Map.__init__(self, mazemat)
         # 动作空间
         self.actions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
         # 状态空间的v值
