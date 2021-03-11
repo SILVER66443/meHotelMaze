@@ -11,7 +11,7 @@ class PrimMaze():
         self.image = np.array([])  # 类型备份，因为后面我需要迷宫成2值状态
         self.size = mazesize  # 大小
         self.maze = self.initmaze()  # 初始化迷宫矩阵规格
-        self.seeker = self.initseeker()  # 初始化Seeker
+        self.seeker = self.initseeker(mazesize)  # 初始化Seeker
         self._walls = []  # 墙列表
         self.createmaze()  # 生成迷宫
 
@@ -28,9 +28,9 @@ class PrimMaze():
         return maze
 
     # 初始化seeker
-    def initseeker(self):
-        self.maze[0, 0] = 2
-        return (0, 0)
+    def initseeker(self, size):
+        self.maze[int((size[0] + 1) / 2), int((size[1] + 1) / 2)] = 2
+        return int((size[0] + 1) / 2), int((size[1] + 1) / 2)
 
     # 将墙插入列表
     def insertwall(self):

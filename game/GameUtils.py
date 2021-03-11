@@ -1,3 +1,5 @@
+# 2021.2.23 backup
+
 import pygame
 from pygame.locals import *
 from sys import exit
@@ -6,9 +8,7 @@ from labyrinth import PrimLaby
 
 
 class Map():
-    # 初始化
     def __init__(self, MazeMat):
-
         # 地图数据: 矩阵、大小、奖励、墙列表、seeker、起始点
         self.mazemat = MazeMat
         self.mazesize = np.shape(self.mazemat)

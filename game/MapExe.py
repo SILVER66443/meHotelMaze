@@ -9,7 +9,7 @@ from sys import exit
 BOARDWIDTH = 1280  # width
 BOARDHEIGHT = 768  # height
 UNITSIZE = 30  # square size
-MAZE_SIZE = (25, 25)  # mazement size
+MAZE_SIZE = (19,19)  # mazement size
 assert MAZE_SIZE[0] % 2 != 0 and MAZE_SIZE[1] % 2 != 0, "The size parameter of mazement shoud be set to an even number!"
 POS_BIAS = (int((BOARDWIDTH - MAZE_SIZE[0] * UNITSIZE) / 2), int((BOARDHEIGHT - MAZE_SIZE[1] * UNITSIZE) / 2))
 
@@ -69,7 +69,8 @@ def main():
         for i in range(MAZE_SIZE[0]):
             for j in range(MAZE_SIZE[1]):
                 if (i, j) in map.walls:
-                    screen.blit(wall, [i * 30 + POS_BIAS[0], j * 30 + POS_BIAS[1]])
+                    # screen.blit(wall, [i * 30 + POS_BIAS[0], j * 30 + POS_BIAS[1]])
+                    pygame.draw.rect(screen, NAVYBLUE, (i * 30 + POS_BIAS[0], j * 30 + POS_BIAS[1], 30, 30))
                 else:
                     pygame.draw.rect(screen, CYAN, (i * 30 + POS_BIAS[0], j * 30 + POS_BIAS[1], 30, 30))
 
