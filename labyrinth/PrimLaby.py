@@ -114,3 +114,9 @@ class PrimMaze():
                 if self.image[i, j] == 1 or self.image[i, j] == 3:
                     self.image[i, j] = 0
         return self.image
+
+    def dispaly1(self):
+        plt.imshow(self.maze, cmap=cm.Greys_r, interpolation='none')
+        plt.show()
+
+

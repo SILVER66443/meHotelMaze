@@ -6,7 +6,7 @@ import matplotlib.cm as cm
 
 class RecBack:
     def __init__(self):
-        self.size = (15, 15)
+        self.size = (51, 51)
         self.seeker = []
         self.maze = []
         self.createmaze()

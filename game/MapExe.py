@@ -9,7 +9,7 @@ from sys import exit
 BOARDWIDTH = 1280  # width
 BOARDHEIGHT = 768  # height
 UNITSIZE = 30  # square size
-MAZE_SIZE = (19,19)  # mazement size
+MAZE_SIZE = (19, 19)  # mazement size
 assert MAZE_SIZE[0] % 2 != 0 and MAZE_SIZE[1] % 2 != 0, "The size parameter of mazement shoud be set to an even number!"
 POS_BIAS = (int((BOARDWIDTH - MAZE_SIZE[0] * UNITSIZE) / 2), int((BOARDHEIGHT - MAZE_SIZE[1] * UNITSIZE) / 2))
 
