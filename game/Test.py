@@ -6,24 +6,13 @@ import random
 
 class Ball(pygame.sprite.Sprite):
     def __init__(self):
-        pygame.sprite.Sprite.__init__(self)
+        super().__init__()
         self.image = pygame.image.load("G:/pyProject/meHotelMaze/PNG/wall.png")
         self.rect = self.image.get_rect()
         self.rect.top = 100.5
         self.rect.left = 500
         self.speed = (2, 2)
 
-
-# def rotate(image, angle):
-#     w, h = image.get_size()
-#     box = [pygame.math.Vector2(p) for p in [(0, 0), (w, 0), (w, -h), (0, -h)]]
-#     box_rotate = [p.rotate(angle) for p in box]
-#     min_box = (min(box_rotate, key=lambda p: p[0])[0], min(box_rotate, key=lambda p: p[1])[1])
-#     max_box = (max(box_rotate, key=lambda p: p[0])[0], max(box_rotate, key=lambda p: p[1])[1])
-#
-#     origin = (pos[0] + min_box[0], pos[1] - max_box[1])
-#
-#     rotated_image = pygame.transform.rotate(image, angle)
 
 def blitRotate(surf, image, pos, originPos, angle):
     # calculate the axis aligned bounding box of the rotated image
