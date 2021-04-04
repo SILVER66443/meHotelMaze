@@ -1,7 +1,8 @@
+# 智能体类：包含训练等功能
 import numpy as np
 import random
 from labyrinth import PrimLaby
-from game import GameUtils
+from game_bak import GameUtils
 
 
 class Model(GameUtils.Map):

@@ -1,4 +1,5 @@
-from game import GameUtils
+# 对原有模型进行测试
+from game_bak import GameUtils
 from labyrinth import PrimLaby
 import numpy as np
 import pygame

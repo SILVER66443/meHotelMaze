@@ -1,38 +1,15 @@
-import pygame
-from pygame.locals import *
-from sys import exit
-import numpy as np
-from labyrinth import PrimLaby
-
-
-class Map():
-    # 初始化
-    def __init__(self, MazeMat):
-        # 地图数据: 矩阵、大小、奖励、墙列表、seeker、起始点
-        self.puzzle = MazeMat
-        self.size = np.shape(self.puzzle)
-        self.reward = 0
-        self.start = [0, 0]
-        self.end = [self.size[0] - 1, self.size[1] - 1]
-        self.walls = []  # 墙列表
-        for i in range(self.size[0]):
-            for j in range(self.size[1]):
-                if self.puzzle[i, j] == 0:
-                    temp = i, j
-                    self.walls.append(temp)
+# 玩家类、包含得分、状态等信息
 
 
 class Player:
     def __init__(self):
+        """ 包含当前位置、得分、状态等属性 """
         seeker = [0, 0]
         score = 0
         state = 0  # 0:ready 1:playing 2:end
 
 
-class Game:
-    def __init__(self, player, map):
-        self.player = player
-        self.map = map
+
 
     # 根据速度移动
     def state_move(self, speed):

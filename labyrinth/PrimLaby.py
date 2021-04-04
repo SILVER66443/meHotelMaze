@@ -6,7 +6,7 @@ import random
 import matplotlib.cm as cm
 
 
-class PrimMaze():
+class PrimMaze:
     def __init__(self, mazesize):
         self.image = np.array([])  # 类型备份，因为后面我需要迷宫成2值状态
         self.size = mazesize  # 大小
