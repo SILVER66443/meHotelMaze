@@ -44,7 +44,7 @@ def main():
     pygame.init()
     running = True
 
-    bg_size = 1024, 681
+    bg_size = 1024, 640
     screen = pygame.display.set_mode(bg_size)
     pygame.display.set_caption("Demo_Test")
 

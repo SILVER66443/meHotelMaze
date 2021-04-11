@@ -12,12 +12,11 @@ class PrimMaze:
         self.size = mazesize  # 大小
         self.maze = self.initmaze()  # 初始化迷宫矩阵规格
         self.seeker = self.initseeker(mazesize)  # 初始化Seeker
-        self._walls = []  # 墙列表
+        self.walls = []  # 墙列表
         self.createmaze()  # 生成迷宫
 
     # 初始化规格
     def initmaze(self):
-
         x, y = self.size
         maze = np.zeros(self.size)  # 创建0矩阵
         # 标记墙
@@ -38,16 +37,16 @@ class PrimMaze:
 
         # 添加过程
         if self.seeker[0] + 1 < size[0] and self.maze[self.seeker[0] + 1, self.seeker[1]] == 1:
-            self._walls.append((self.seeker[0] + 1, self.seeker[1]))
+            self.walls.append((self.seeker[0] + 1, self.seeker[1]))
         if self.seeker[0] - 1 > 0 and self.maze[self.seeker[0] - 1, self.seeker[1]] == 1:
-            self._walls.append((self.seeker[0] - 1, self.seeker[1]))
+            self.walls.append((self.seeker[0] - 1, self.seeker[1]))
         if self.seeker[1] + 1 < size[1] and self.maze[self.seeker[0], self.seeker[1] + 1] == 1:
-            self._walls.append((self.seeker[0], self.seeker[1] + 1))
+            self.walls.append((self.seeker[0], self.seeker[1] + 1))
         if self.seeker[1] - 1 > 0 and self.maze[self.seeker[0], self.seeker[1] - 1] == 1:
-            self._walls.append((self.seeker[0], self.seeker[1] - 1))
+            self.walls.append((self.seeker[0], self.seeker[1] - 1))
 
         # 使用集合得特性去掉重复得墙
-        self._walls = list(set(self._walls))
+        self.walls = list(set(self.walls))
 
     # 摧毁墙
     def destroywall(self, wall):
@@ -95,9 +94,9 @@ class PrimMaze:
     def createmaze(self):
         while True:
             self.insertwall()
-            temp = self._walls.pop(random.randint(0, np.shape(self._walls)[0] - 1))
+            temp = self.walls.pop(random.randint(0, np.shape(self.walls)[0] - 1))
             self.destroywall(temp)
-            if not self._walls:
+            if not self.walls:
                 break
 
     # 返回迷宫序列
@@ -118,5 +117,3 @@ class PrimMaze:
     def dispaly1(self):
         plt.imshow(self.maze, cmap=cm.Greys_r, interpolation='none')
         plt.show()
-
-
