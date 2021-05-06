@@ -5,8 +5,8 @@ import matplotlib.cm as cm
 
 
 class RecBack:
-    def __init__(self):
-        self.size = (51, 51)
+    def __init__(self, mazesize):
+        self.size = mazesize
         self.seeker = []
         self.maze = []
         self.createmaze()
@@ -19,7 +19,6 @@ class RecBack:
             for j in range(self.size[1]):
                 if i % 2 == 1 or j % 2 == 1:
                     maze[i, j] = 1
-        print(maze)
         return maze
 
     def createmaze(self):
@@ -67,8 +66,4 @@ class RecBack:
     def dispaly(self):
         plt.imshow(self.maze, cmap=cm.Greys_r, interpolation='none')
         plt.show()
-
-recback = RecBack()
-recback.dispaly()
-
 

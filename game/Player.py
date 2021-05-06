@@ -9,8 +9,6 @@ class Player:
         state = 0  # 0:ready 1:playing 2:end
 
 
-
-
     # 根据速度移动
     def state_move(self, speed):
 

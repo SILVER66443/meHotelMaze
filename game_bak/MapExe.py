@@ -74,8 +74,23 @@ def main():
                     pygame.draw.rect(screen, NAVYBLUE, (i * 30 + POS_BIAS[0], j * 30 + POS_BIAS[1], 30, 30))
                 else:
                     pygame.draw.rect(screen, CYAN, (i * 30 + POS_BIAS[0], j * 30 + POS_BIAS[1], 30, 30))
+                if (i, j) == (0, 0) or (i, j) == (18, 18):
+                    pygame.draw.rect(screen, WHITE, (i * 30 + POS_BIAS[0], j * 30 + POS_BIAS[1], 30, 30))
+
+        # 打印文字
+        font = pygame.font.SysFont("SimSun", 40)
+        text1 = font.render("Size: 19*19", True, (255, 255, 255))
+        text2 = font.render("Level: 3", True, (255, 255, 255))
+        text3 = font.render("Reward: 79", True, (255, 255, 255))
+        text4 = font.render("Step: 23", True, (255, 255, 255))
+
+        screen.blit(text1, (20, 100))
+        screen.blit(text2, (20, 140))
+        screen.blit(text3, (20, 180))
+        screen.blit(text4, (20, 220))
 
         screen.blit(player, p_rect)  # 将图片画到窗口上
+
         pygame.display.update()  # 更新全部显示
 
 
